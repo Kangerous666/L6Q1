@@ -12,8 +12,8 @@ def hello_world():
     if request_type_str == 'GET':
         return render_template('index.html', href2='')
     else:
-        myage = request.form['age']
-        mygender = request.form['gender']
+        myage = float(request.form['age'])
+        mygender = int(request.form['gender'])
         model = load('app/watch-recommender.joblib')
         np_arr = np.array([float(myage), int(mygender)])
         predictions = model.predict([np_arr])  
